@@ -23,7 +23,7 @@ export function clientInjectPlugin(): Plugin {
         const realPath = path.join(
           serverContext.root,
           'node_modules',
-          'mini-vite',
+          'chovrio',
           'dist',
           'client.mjs'
         );

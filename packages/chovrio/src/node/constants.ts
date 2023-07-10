@@ -32,5 +32,5 @@ export const HASH_RE = /#.*$/s;
 
 export const DEFAULT_EXTERSIONS = ['.tsx', '.ts', '.jsx', 'js'];
 
-export const CLIENT_PUBLIC_PATH = '/@vite/client';
+export const CLIENT_PUBLIC_PATH = '/@chovrio/client';
 export const HMR_PORT = 24678;

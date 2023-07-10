@@ -1,5 +1,9 @@
 import { init, parse } from 'es-module-lexer';
-import { BARE_IMPORT_RE, PRE_BUNDLE_DIR } from '../constants';
+import {
+  BARE_IMPORT_RE,
+  CLIENT_PUBLIC_PATH,
+  PRE_BUNDLE_DIR
+} from '../constants';
 import {
   cleanUrl,
   getShortName,
@@ -85,15 +89,15 @@ export function importAnalysisPlugin(): Plugin {
         }
       }
       // 只对业务源码注入
-      // if (!id.includes("node_modules")) {
-      //   // 注入 HMR 相关的工具函数
-      //   ms.prepend(
-      //     `import { createHotContext as __vite__createHotContext } from "${CLIENT_PUBLIC_PATH}";` +
-      //       `import.meta.hot = __vite__createHotContext(${JSON.stringify(
-      //         cleanUrl(curMod.url)
-      //       )});`
-      //   );
-      // }
+      if (!id.includes('node_modules')) {
+        // 注入 HMR 相关的工具函数
+        ms.prepend(
+          `import { createHotContext as __vite__createHotContext } from "${CLIENT_PUBLIC_PATH}";` +
+            `import.meta.hot = __vite__createHotContext(${JSON.stringify(
+              cleanUrl(curMod.url)
+            )});`
+        );
+      }
       moduleGraph.updateModuleInfo(curMod, importedModules);
       return {
         code: ms.toString(),

@@ -26,6 +26,7 @@
   "devDependencies": {
     "@types/connect": "^3.4.35",
     "@types/debug": "^4.1.8",
-    "@types/resolve": "^1.20.2"
+    "@types/resolve": "^1.20.2",
+    "@types/ws": "^8.5.5"
   }
 }
