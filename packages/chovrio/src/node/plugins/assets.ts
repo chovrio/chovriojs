@@ -18,7 +18,7 @@ export function assetPlugin(): Plugin {
       const cleanedId = removeImportQuery(cleanUrl(id));
       const resolvedId = `/${getShortName(
         normalizePath(id),
-        serverContext.root
+        normalizePath(serverContext.root)
       )}`;
       // 这里仅处理 svg
       if (cleanedId.endsWith('.svg')) {

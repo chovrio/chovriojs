@@ -64,8 +64,8 @@ export function importAnalysisPlugin(): Plugin {
         // 静态资源
         if (modSource.endsWith('.svg')) {
           // 加上 ?import 后缀
-          const resolveUrl = path.join(path.dirname(id), modSource);
-          ms.overwrite(modStart, modEnd, `${resolveUrl}?import`);
+          const resolvedUrl = await resolve(modSource, id);
+          ms.overwrite(modStart, modEnd, `${resolvedUrl}?import`);
           continue;
         }
         // 第三方库：路径重写到预构建产物的路径
