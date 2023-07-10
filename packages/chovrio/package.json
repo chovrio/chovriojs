@@ -1,0 +1,20 @@
+{
+  "name": "chovrio",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cac": "^6.7.14",
+    "chokidar": "^3.5.3",
+    "connect": "^3.7.0",
+    "magic-string": "^0.30.1",
+    "sirv": "^2.0.3",
+    "ws": "^8.13.0"
+  }
+}
