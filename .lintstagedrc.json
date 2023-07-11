@@ -1,4 +1,7 @@
 {
-  "*.{js,jsx,ts,tsx}": ["prettier --write .", "eslint  --fix"],
+  "*!(**/create-chovrio/**/*).{js,jsx,ts,tsx}": [
+    "prettier --write .",
+    "eslint  --fix"
+  ],
   "*.md": ["prettier --write"]
 }
