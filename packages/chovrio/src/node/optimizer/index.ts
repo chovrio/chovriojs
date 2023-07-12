@@ -6,7 +6,7 @@ import { PRE_BUNDLE_DIR } from '../constants';
 import { preBundlePlugin } from './preBundlePlugin';
 export async function optimize(root: string) {
   // 1.确定入口
-  const entry = path.resolve(root, 'src/main.tsx');
+  const entry = path.resolve(root, 'main.js');
   // 2.从入口处扫描依赖
   const deps = new Set<string>();
   await build({

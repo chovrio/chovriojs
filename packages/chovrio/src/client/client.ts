@@ -74,6 +74,8 @@ export const createHotContext = (ownerPath: string) => {
       if (typeof deps === 'function' || !deps) {
         acceptDeps([ownerPath], ([mod]: [HotCallback]) => deps && deps(mod));
       }
+      // 防止eslint
+      callback;
     },
     // 模块不再生效的回调
     // import.meta.hot.prune(() => {})
@@ -133,8 +135,6 @@ export function updateStyle(id: string, content: string) {
 
 export function removeStyle(id: string): void {
   const style = sheetsMap.get(id);
-  console.log(sheetsMap, id);
-
   if (style) {
     document.head.removeChild(style);
   }

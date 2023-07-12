@@ -35,6 +35,7 @@ export async function startDevServer() {
   const pluginContainer = createPluginContainer(plugins);
   // WebSocket 对象
   const ws = createWebSocketServer(app);
+  // 监听除了node_modules和.git文件夹以外的文件的变化
   const watcher = chokidar.watch(root, {
     ignored: ['**/node_modules/**', '**/.git/**'],
     ignoreInitial: true

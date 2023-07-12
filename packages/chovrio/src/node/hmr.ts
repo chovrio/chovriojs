@@ -11,7 +11,6 @@ export function bindingHMREvents(serverContext: ServerContext) {
     await moduleGraph.invalidateModule(file);
     // 向客户端发送更新信息
     file = normalizePath(file);
-    console.log(file, normalizePath(root));
     ws.send({
       type: 'update',
       updates: [

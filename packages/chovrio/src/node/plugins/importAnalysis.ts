@@ -68,7 +68,8 @@ export function importAnalysisPlugin(): Plugin {
         // 静态资源
         if (modSource.endsWith('.svg')) {
           // 加上 ?import 后缀
-          const resolvedUrl = await resolve(modSource, id);
+          const resolvedUrl =
+            (await resolve(modSource, id)) || `/public/${modSource}`;
           ms.overwrite(modStart, modEnd, `${resolvedUrl}?import`);
           continue;
         }

@@ -1,0 +1,18 @@
+{
+  "name": "demo-none",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:vite": "vite",
+    "build:vite": "vite build",
+    "preview:vite": "vite preview",
+    "dev:chovrio": "chovrio",
+    "build:chovrio": "chovrio build",
+    "preview:chovrio": "chovrio preview"
+  },
+  "devDependencies": {
+    "chovrio": "E:/web/only/chovrio/packages/chovrio",
+    "vite": "E:/web/sc/vite/packages/vite"
+  }
+}
