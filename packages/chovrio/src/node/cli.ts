@@ -11,8 +11,8 @@ cli
   .alias('server')
   .alias('dev')
   .action(async (root: string, options: any) => {
-    const config = await loadConfigFromFile('dev', process.cwd());
-    console.log(config);
+    // const config = await loadConfigFromFile('dev', process.cwd());
+    // console.log(config);
     await startDevServer();
   });
 

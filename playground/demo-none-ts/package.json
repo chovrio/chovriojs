@@ -4,12 +4,15 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc && vite build",
-    "preview": "vite preview"
+    "dev:vite": "vite",
+    "build:vite": "vite build",
+    "preview:vite": "vite preview",
+    "dev:chovrio": "chovrio",
+    "build:chovrio": "chovrio build",
+    "preview:chovrio": "chovrio preview"
   },
   "devDependencies": {
-    "typescript": "^5.0.2",
-    "vite": "^4.3.9"
+    "chovrio": "E:/web/only/chovrio/packages/chovrio",
+    "vite": "E:/web/sc/vite/packages/vite"
   }
 }
