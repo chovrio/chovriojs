@@ -5,3 +5,8 @@ export default function (...args) {
     age: 20
   };
 }
+
+// module.exports = {
+//   name: 'chovrio',
+//   age: 20
+// };

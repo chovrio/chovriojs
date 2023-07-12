@@ -15,8 +15,10 @@ import { ModuleGraph } from '../ModuleGraph';
 import { createWebSocketServer } from '../ws';
 import { bindingHMREvents } from '../hmr';
 import { normalizePath } from '../utils';
+import { Config } from '../config';
 
 export interface ServerContext {
+  command: 'dev' | 'build' | 'test';
   root: string;
   pluginContainer: PluginContainer;
   app: connect.Server;
@@ -26,11 +28,18 @@ export interface ServerContext {
   watcher: FSWatcher;
 }
 
-export async function startDevServer() {
+export async function startDevServer(config: Config) {
   const app = connect();
   const root = process.cwd();
   const startTime = Date.now();
-  const plugins = resolvePlugins();
+  let plugins = resolvePlugins();
+  console.log(plugins.length);
+
+  if (config.plugins?.length) {
+    plugins = [...plugins, ...config.plugins.flat(Infinity)];
+  }
+  console.log(plugins.length);
+  // console.log(plugins);
   const moduleGraph = new ModuleGraph(url => pluginContainer.resolveId(url));
   const pluginContainer = createPluginContainer(plugins);
   // WebSocket 对象
@@ -41,6 +50,7 @@ export async function startDevServer() {
     ignoreInitial: true
   });
   const serverContext: ServerContext = {
+    command: 'dev',
     root: normalizePath(process.cwd()),
     app,
     pluginContainer,

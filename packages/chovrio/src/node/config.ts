@@ -1,7 +1,9 @@
 import path from 'node:path';
 import fs from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
 import { red } from 'picocolors';
 import { build } from 'tsup';
+import { dynamicImport } from './utils';
 // import { build } from 'tsup';
 // 存放所有和配置相关的内容
 
@@ -25,10 +27,11 @@ interface buildConfig {
   outDir: string;
 }
 // 配置文件类型
-interface Config {
+export interface Config {
   basic?: basicConfig;
   dev?: serverConfig;
   build?: buildConfig;
+  plugins?: [];
   deplay?: any;
 }
 
@@ -42,17 +45,22 @@ export const loadConfigFromFile = async (
   configEnv: ConfigEnv,
   configRoot: string,
   configFile?: string
-): Promise<Config | {}> => {
+): Promise<{
+  path: string;
+  config: Config;
+}> => {
   let userConfig;
   // 1.确定配置文件的格式
   const flags = judgeFileFormat(configRoot, configFile);
   if (flags === null) {
-    return {};
+    return {
+      path: configRoot,
+      config: {}
+    };
   }
   const { resolvedPath, isESM, isTS } = flags;
   // 2.加载配置文件，根据不同的格式，有不同的加载方法
   // 对配置文件进行打包，输出 code 代码文本和 dependcies 该文件的依赖
-  console.log(resolvedPath, isESM, isTS);
   try {
     const bundleConfigFileName = `config-${+Date.now()}`;
     await build({
@@ -60,34 +68,44 @@ export const loadConfigFromFile = async (
         [`${bundleConfigFileName}`]: resolvedPath
       },
       outDir: configRoot,
-      format: 'cjs',
+      format: isESM ? 'esm' : 'cjs',
       target: 'es2020',
       splitting: false
     });
-    userConfig = require(path.resolve(
-      configRoot,
-      bundleConfigFileName + '.cjs'
-    )).default;
+    if (isESM) {
+      userConfig = await dynamicImport(
+        pathToFileURL(`${path.resolve(configRoot, bundleConfigFileName)}.js`)
+      );
+    } else {
+      userConfig = require(`${path.resolve(
+        configRoot,
+        bundleConfigFileName
+      )}.js`);
+    }
+
     // 模拟清空命令行
-    process.stdout.write('\x1Bc');
-    fs.rmSync(path.resolve(configRoot, bundleConfigFileName + '.cjs'));
+    // process.stdout.write('\x1Bc');
+    fs.rmSync(path.resolve(configRoot, bundleConfigFileName + '.js'));
     if (!userConfig) {
       // 加载普通的 CJS 格式的配置文件
       userConfig = {};
     }
     // 如果配置是函数，则调用，其返回值作为配置
     const config = await (typeof userConfig === 'function'
-      ? userConfig(configEnv)
+      ? userConfig.default(configEnv)
       : userConfig);
     // 3.返回配置文件信息
     return {
       path: resolvedPath,
-      config
+      config: config.default
     };
   } catch (e) {
     console.error('出错了', e);
   }
-  return {};
+  return {
+    path: configRoot,
+    config: {}
+  };
 };
 
 type ConfigType = {
