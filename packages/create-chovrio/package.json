@@ -1,6 +1,6 @@
 {
   "name": "create-chovrio",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "chovrio-template-generator",
   "main": "index.js",
   "type": "module",
@@ -21,7 +21,8 @@
   "files": [
     "index.js",
     "dist",
-    "readme.md"
+    "readme.md",
+    "template-*"
   ],
   "author": "chovrio",
   "license": "ISC",
