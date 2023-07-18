@@ -4,6 +4,7 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 import { red } from 'picocolors';
 import { build } from 'tsup';
 import { dynamicImport } from './utils';
+import { Plugin } from './plugin';
 // import { build } from 'tsup';
 // 存放所有和配置相关的内容
 
@@ -208,3 +209,8 @@ export function lookupFile(directory: string, fileName: string): string | null {
   }
   return null;
 }
+
+interface IConfig {
+  plugins: Plugin[];
+}
+export const defineConfig = (config: IConfig) => config;

@@ -11,8 +11,8 @@
     "build:chovrio": "chovrio build",
     "preview:chovrio": "chovrio preview"
   },
-  "devDependencies": {
-    "chovrio": "E:/web/only/chovrio/packages/chovrio",
-    "vite": "E:/web/sc/vite/packages/vite"
+  "dependencies": {
+    "chovrio": "link:E:/web/only/chovrio/packages/chovrio",
+    "vite": "link:E:/web/sc/vite/packages/vite"
   }
 }

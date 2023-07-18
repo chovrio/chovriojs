@@ -2,9 +2,22 @@
   "name": "chovrio",
   "version": "1.3.1",
   "description": "",
-  "main": "index.js",
   "bin": {
     "chovrio": "bin/chovrio.js"
+  },
+  "main": "./dist/node/index.js",
+  "types": "./dist/node/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/node/index.d.ts",
+      "import": "./dist/node/index.js",
+      "require": "./index.mjs"
+    },
+    "./client": {
+      "types": "./client.d.ts"
+    },
+    "./dist/client/*": "./dist/client/*",
+    "./package.json": "./package.json"
   },
   "scripts": {
     "start": "tsup --watch --dts",
