@@ -101,7 +101,8 @@ export const loadConfigFromFile = async (
       config: config.default
     };
   } catch (e) {
-    console.error('出错了', e);
+    console.log('未存在配置文件');
+    // console.error('出错了', e);
   }
   return {
     path: configRoot,

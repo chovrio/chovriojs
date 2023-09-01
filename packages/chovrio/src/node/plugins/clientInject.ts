@@ -25,6 +25,7 @@ export function clientInjectPlugin(): Plugin {
           'node_modules',
           'chovrio',
           'dist',
+          'client',
           'client.mjs'
         );
         const code = await fs.readFile(realPath, 'utf-8');

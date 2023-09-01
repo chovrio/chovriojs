@@ -43,9 +43,6 @@ export const createPluginContainer = (plugins: Plugin[]): PluginContainer => {
     async load(id) {
       const ctx = new Context() as any;
       for (const plugin of plugins) {
-        if (id.includes('App.jsx')) {
-          console.log('plugin.name: ', plugin.name);
-        }
         if (plugin.load) {
           const result = await plugin.load.call(ctx, id);
           if (result) {

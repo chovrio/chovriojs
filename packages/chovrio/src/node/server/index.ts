@@ -33,12 +33,10 @@ export async function startDevServer(config: Config) {
   const root = process.cwd();
   const startTime = Date.now();
   let plugins = resolvePlugins();
-  console.log(plugins.length);
-
   if (config.plugins?.length) {
     plugins = [...plugins, ...config.plugins.flat(Infinity)];
   }
-  console.log(plugins.length);
+  // console.log(plugins.length);
   // console.log(plugins);
   const moduleGraph = new ModuleGraph(url => pluginContainer.resolveId(url));
   const pluginContainer = createPluginContainer(plugins);
