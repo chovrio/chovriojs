@@ -1,6 +1,6 @@
 import { NextHandleFunction } from 'connect';
 import { ServerContext } from '..';
-import path from 'path';
+import path from 'node:path';
 import { pathExists, readFile } from 'fs-extra';
 
 export function indexHtmlMiddware(

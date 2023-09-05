@@ -1,6 +1,6 @@
 import path from 'node:path';
 import fs from 'node:fs';
-import { fileURLToPath, pathToFileURL } from 'node:url';
+import { pathToFileURL } from 'node:url';
 import { red } from 'picocolors';
 import { build } from 'tsup';
 import { dynamicImport } from './utils';
@@ -64,6 +64,7 @@ export const loadConfigFromFile = async (
   // 对配置文件进行打包，输出 code 代码文本和 dependcies 该文件的依赖
   try {
     const bundleConfigFileName = `config-${+Date.now()}`;
+
     await build({
       entry: {
         [`${bundleConfigFileName}`]: resolvedPath
@@ -71,7 +72,8 @@ export const loadConfigFromFile = async (
       outDir: configRoot,
       format: isESM ? 'esm' : 'cjs',
       target: 'es2020',
-      splitting: false
+      splitting: false,
+      treeshake: 'recommended'
     });
     if (isESM) {
       userConfig = await dynamicImport(
@@ -101,7 +103,7 @@ export const loadConfigFromFile = async (
       config: config.default
     };
   } catch (e) {
-    console.log('未存在配置文件');
+    console.log('未存在配置文件', e);
     // console.error('出错了', e);
   }
   return {

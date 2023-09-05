@@ -1,7 +1,6 @@
 import cac from 'cac';
 import { loadConfigFromFile } from './config';
 import { startDevServer } from './server';
-export { defineConfig } from './config';
 const cli = cac();
 
 // [] 中的内容为可选参数，也就是说仅输入 `vite` 命令下回执行下面的逻辑

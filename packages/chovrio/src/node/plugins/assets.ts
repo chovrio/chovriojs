@@ -10,7 +10,7 @@ import {
 export function assetPlugin(): Plugin {
   let serverContext: ServerContext;
   return {
-    name: 'm-vite:asset',
+    name: 'm-chovrio:asset',
     configureServer(s) {
       serverContext = s;
     },

@@ -1,5 +1,10 @@
 import { NextHandleFunction } from 'connect';
-import { isJSRequest, cleanUrl, isImportRequest } from '../../utils';
+import {
+  isJSRequest,
+  cleanUrl,
+  isImportRequest,
+  isVUERequest
+} from '../../utils';
 import { ServerContext } from '..';
 import { isCSSRequest } from '../../utils';
 import createDebug from 'debug';
@@ -45,7 +50,12 @@ export function transformMiddleware(
     const url = req.url;
     debug('transformMiddleware：%s', url);
     // transform JS request
-    if (isJSRequest(url) || isCSSRequest(url) || isImportRequest(url)) {
+    if (
+      isJSRequest(url) ||
+      isCSSRequest(url) ||
+      isImportRequest(url) ||
+      isVUERequest(url)
+    ) {
       // 核心编译函数
       let result = await transformRequest(url, serverContext);
       if (!result) {

@@ -1,2 +1,2 @@
 #!/usr/bin/env node
-require('../dist/node/index');
+require('../dist/node/cli');

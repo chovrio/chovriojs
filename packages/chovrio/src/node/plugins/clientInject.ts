@@ -1,5 +1,5 @@
 import fs from 'fs-extra';
-import path from 'path';
+import path from 'node:path';
 import { CLIENT_PUBLIC_PATH, HMR_PORT } from '../constants';
 import { Plugin } from '../plugin';
 import { ServerContext } from '../server';
@@ -7,7 +7,7 @@ import { ServerContext } from '../server';
 export function clientInjectPlugin(): Plugin {
   let serverContext: ServerContext;
   return {
-    name: 'm-vite:client-inject',
+    name: 'm-chovrio:client-inject',
     configureServer(s) {
       serverContext = s;
     },

@@ -34,6 +34,9 @@ export const cleanUrl = (url: string): string =>
 export const isCSSRequest = (id: string): boolean =>
   cleanUrl(id).endsWith('.css');
 
+export const isVUERequest = (id: string): boolean =>
+  cleanUrl(id).endsWith('.vue');
+
 export function isImportRequest(url: string): boolean {
   return url.endsWith('?import');
 }

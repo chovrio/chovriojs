@@ -2,11 +2,11 @@ import { readFile } from 'fs-extra';
 import { Plugin } from '../plugin';
 import { isJSRequest } from '../utils';
 import esbuild from 'esbuild';
-import path from 'path';
+import path from 'node:path';
 
 export function esbuildTransformPlugin(): Plugin {
   return {
-    name: 'm-vite:esbuild-transform',
+    name: 'm-chovrio:esbuild-transform',
     // 加载模块
     async load(id) {
       if (isJSRequest(id)) {

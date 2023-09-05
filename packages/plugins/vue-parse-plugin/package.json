@@ -1,0 +1,35 @@
+{
+  "name": "vue-parse-plugin",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "start": "tsup --watch",
+    "build": "tsup --minify"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "peerDependencies": {
+    "chovrio": "E:/web/only/chovrio/packages/chovrio",
+    "vue": "^3.2.25"
+  },
+  "peerDependenciesMeta": {
+    "vue": {
+      "optional": true
+    }
+  },
+  "devDependencies": {
+    "vue": "^3.3.4"
+  },
+  "dependencies": {
+    "fs-extra": "^11.1.1"
+  }
+}

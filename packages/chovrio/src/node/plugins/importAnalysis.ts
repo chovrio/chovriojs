@@ -13,14 +13,14 @@ import {
 } from '../utils';
 // magic-string 用来作字符串编辑
 import MagicString from 'magic-string';
-import path from 'path';
+import path from 'node:path';
 import { Plugin } from '../plugin';
 import { ServerContext } from '../server';
 
 export function importAnalysisPlugin(): Plugin {
   let serverContext: ServerContext;
   return {
-    name: 'm-vite:import-analysis',
+    name: 'm-chovrio:import-analysis',
     configureServer(s) {
       // 保存服务端上下文
       serverContext = s;

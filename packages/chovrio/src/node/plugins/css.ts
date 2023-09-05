@@ -7,7 +7,7 @@ import { getShortName, normalizePath } from '../utils';
 export function cssPlugin(): Plugin {
   let serverContext: ServerContext;
   return {
-    name: 'm-vite:css',
+    name: 'm-chovrio:css',
     configureServer(s) {
       serverContext = s;
     },
@@ -22,8 +22,8 @@ export function cssPlugin(): Plugin {
       if (id.endsWith('.css')) {
         // 包装成 JS 模块
         const jsContent = `
-import { createHotContext as __vite__createHotContext } from "${CLIENT_PUBLIC_PATH}";
-import.meta.hot = __vite__createHotContext("/${getShortName(
+import { createHotContext as __chovrio__createHotContext } from "${CLIENT_PUBLIC_PATH}";
+import.meta.hot = __chovrio__createHotContext("/${getShortName(
           normalizePath(id),
           serverContext.root
         )}");

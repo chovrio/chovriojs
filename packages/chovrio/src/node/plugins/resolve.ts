@@ -1,7 +1,7 @@
 import resolve from 'resolve';
 import { Plugin } from '../plugin';
 import { ServerContext } from '../server';
-import path from 'path';
+import path from 'node:path';
 import { pathExists } from 'fs-extra';
 import { DEFAULT_EXTERSIONS } from '../constants';
 import { normalizePath } from '../utils';
@@ -9,7 +9,7 @@ import { normalizePath } from '../utils';
 export function resolvePlugin(): Plugin {
   let serverContext: ServerContext;
   return {
-    name: 'm-vite:resolve',
+    name: 'm-chovrio:resolve',
     configureServer(s) {
       // 保存服务端上下文
       serverContext = s;
