@@ -12,7 +12,7 @@
     "preview:chovrio": "chovrio preview"
   },
   "dependencies": {
-    "chovrio": "link:E:/web/only/chovrio/packages/chovrio",
+    "chovrio": "workspace:*",
     "vite": "link:E:/web/sc/vite/packages/vite"
   }
 }
