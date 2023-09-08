@@ -12,7 +12,7 @@
     "preview:chovrio": "chovrio preview"
   },
   "devDependencies": {
-    "chovrio": "E:/web/only/chovrio/packages/chovrio",
+    "chovrio": "workspace:*",
     "vite": "E:/web/sc/vite/packages/vite"
   }
 }
