@@ -87,7 +87,7 @@ export const loadConfigFromFile = async (
     }
 
     // 模拟清空命令行
-    // process.stdout.write('\x1Bc');
+    process.stdout.write('\x1Bc');
     fs.rmSync(path.resolve(configRoot, bundleConfigFileName + '.js'));
     if (!userConfig) {
       // 加载普通的 CJS 格式的配置文件
@@ -103,7 +103,7 @@ export const loadConfigFromFile = async (
       config: config.default
     };
   } catch (e) {
-    console.log('未存在配置文件', e);
+    // console.log('未存在配置文件', e);
     // console.error('出错了', e);
   }
   return {

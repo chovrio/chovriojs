@@ -10,7 +10,13 @@ cli
   .alias('server')
   .alias('dev')
   .action(async (root: string, options: any) => {
-    const { config } = await loadConfigFromFile('dev', process.cwd());
+    let config;
+    try {
+      const userConfig = await loadConfigFromFile('dev', process.cwd());
+      config = userConfig.config;
+    } catch {
+      config = {};
+    }
     await startDevServer(config);
   });
 
