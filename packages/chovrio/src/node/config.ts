@@ -1,5 +1,5 @@
-import path from 'node:path';
-import fs from 'node:fs';
+import path from 'path';
+import fs from 'fs';
 import { pathToFileURL } from 'node:url';
 import { red } from 'picocolors';
 import { build } from 'tsup';
@@ -75,15 +75,15 @@ export const loadConfigFromFile = async (
       splitting: false,
       treeshake: 'recommended'
     });
+    // TODO: tsup打包文件中存在动态require导致不支持
     if (isESM) {
       userConfig = await dynamicImport(
         pathToFileURL(`${path.resolve(configRoot, bundleConfigFileName)}.js`)
       );
     } else {
-      userConfig = require(`${path.resolve(
-        configRoot,
-        bundleConfigFileName
-      )}.js`);
+      userConfig = require(
+        `${path.resolve(configRoot, bundleConfigFileName)}.js`
+      );
     }
 
     // 模拟清空命令行
@@ -103,8 +103,8 @@ export const loadConfigFromFile = async (
       config: config.default
     };
   } catch (e) {
-    // console.log('未存在配置文件', e);
-    // console.error('出错了', e);
+    console.log('未存在配置文件', e);
+    console.error('出错了', e);
   }
   return {
     path: configRoot,

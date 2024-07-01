@@ -1,5 +1,5 @@
-// import chovrioReact from '@chovriojs/plugins-react-hmr';
+import React from '@chovriojs/plugin-react-hot';
 
 export default {
-  // plugins: [chovrioReact()]
+  plugins: [React()]
 };

@@ -52,6 +52,7 @@ const pruneMap = new Map<string, (data: any) => void | Promise<void>>();
 
 export const createHotContext = (ownerPath: string) => {
   const mod = hotModulesMap.get(ownerPath);
+  console.log(ownerPath, mod);
   if (mod) {
     mod.callbacks = [];
   }
@@ -87,6 +88,8 @@ export const createHotContext = (ownerPath: string) => {
 
 async function fetchUpdate({ path, timestamp }: Update) {
   const mod = hotModulesMap.get(path);
+  console.log('需要更新的模块', mod, hotModulesMap, path);
+
   if (!mod) {
     return;
   }

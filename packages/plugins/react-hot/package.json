@@ -1,0 +1,26 @@
+{
+  "name": "@chovriojs/plugin-react-hot",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "scripts": {
+    "dev": "unbuild --stub",
+    "build": "unbuild"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/core": "^7.24.5",
+    "chovrio": "workspace:*",
+    "react-refresh": "^0.14.0"
+  },
+  "devDependencies": {
+    "unbuild": "^2.0.0"
+  }
+}

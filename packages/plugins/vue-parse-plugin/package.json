@@ -18,7 +18,7 @@
   "author": "",
   "license": "ISC",
   "peerDependencies": {
-    "chovrio": "E:/web/only/chovrio/packages/chovrio",
+    "chovrio": "workspace:*",
     "vue": "^3.2.25"
   },
   "peerDependenciesMeta": {
